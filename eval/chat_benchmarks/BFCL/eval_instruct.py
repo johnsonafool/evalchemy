@@ -58,15 +58,12 @@ class BFCLBenchmark(BaseBenchmark):
     def _get_model_name(self, model: LM) -> str:
         """Extract a clean model name for file naming."""
         if hasattr(model, "model_identifier"):
-            # return (
-            #     model.model_identifier.split("=")[1]
-            #     .split(",")[0]
-            #     .split("__")[-1]
-            #     .replace("-", "_")
-            #     .lower()
-            #     .replace(".", "")
-            # )
-            return model.model_identifier
+            return (
+                model.model_identifier.split("=")[1].split(",")[0].split("__")[-1]
+                # .replace("-", "_")
+                # .lower()
+                # .replace(".", "")
+            )
         else:
             return model.__class__.__name__.lower()
 
