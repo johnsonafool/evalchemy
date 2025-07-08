@@ -142,7 +142,8 @@ class BFCLBenchmark(BaseBenchmark):
         """
         self.logger.info("Generating responses for BFCL...")
 
-        model_name = self._get_model_name(model)
+        # model_name = self._get_model_name(model)
+        model_name = model
         all_results = []
 
         for category in self.test_categories:
