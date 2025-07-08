@@ -306,6 +306,7 @@ class BFCLBenchmark(BaseBenchmark):
             return {"error": "No results to evaluate"}
 
         self.logger.info("Evaluating BFCL responses...")
+        self.logger.info(results[:5])  # Log first 5 results for debugging
 
         # Run official BFCL evaluation
         evaluation_results = self._run_bfcl_evaluation(results)
