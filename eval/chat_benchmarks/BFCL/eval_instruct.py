@@ -58,14 +58,15 @@ class BFCLBenchmark(BaseBenchmark):
     def _get_model_name(self, model: LM) -> str:
         """Extract a clean model name for file naming."""
         if hasattr(model, "model_identifier"):
-            return (
-                model.model_identifier.split("=")[1]
-                .split(",")[0]
-                .split("__")[-1]
-                .replace("-", "_")
-                .lower()
-                .replace(".", "")
-            )
+            # return (
+            #     model.model_identifier.split("=")[1]
+            #     .split(",")[0]
+            #     .split("__")[-1]
+            #     .replace("-", "_")
+            #     .lower()
+            #     .replace(".", "")
+            # )
+            return model.model_identifier
         else:
             return model.__class__.__name__.lower()
 
@@ -142,8 +143,7 @@ class BFCLBenchmark(BaseBenchmark):
         """
         self.logger.info("Generating responses for BFCL...")
 
-        # model_name = self._get_model_name(model)
-        model_name = model
+        model_name = self._get_model_name(model)
         all_results = []
 
         for category in self.test_categories:
